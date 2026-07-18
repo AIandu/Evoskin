@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/chromaskin-whitepaper/"
+title = "ChromaSkin — White Paper"
+version = "1.0.0"
+id = "artifacts/chromaskin-whitepaper"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/chromaskin-whitepaper/" ]
+localPort = 24083
+
+[services.development]
+run = "pnpm --filter @workspace/chromaskin-whitepaper run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/chromaskin-whitepaper", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/chromaskin-whitepaper/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24083"
+BASE_PATH = "/chromaskin-whitepaper/"

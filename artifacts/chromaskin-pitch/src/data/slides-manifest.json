@@ -1,0 +1,82 @@
+[
+  {
+    "id": "cs-slide-0000-0001",
+    "position": 1,
+    "filepath": "src/pages/slides/Slide01Title.tsx",
+    "title": "ChromaSkin — Title",
+    "description": "Engineering Blueprint title slide. Program identification, classification status, principal investigator attribution.",
+    "speakerNotes": "Opening slide. Introduce ChromaSkin: adaptive optical camouflage system using peer-to-peer biomimetic swarm. Author: Loretta Chapman, AI&U. Classification: Demo / Pre-Contract Technical Disclosure."
+  },
+  {
+    "id": "cs-slide-0000-0002",
+    "position": 2,
+    "filepath": "src/pages/slides/Slide02Problem.tsx",
+    "title": "The Problem",
+    "description": "Root cause analysis — Fresnel reflection at abrupt core-shell interfaces creates a visible hexagonal seam grid at scale.",
+    "speakerNotes": "The Fresnel reflectance formula gives 0.36% per abrupt interface (n=1.33→1.50). At 1,000 nodes that's a visible seam grid. Central control compounds the problem. No existing system adapts to real-time texture + contact geometry simultaneously."
+  },
+  {
+    "id": "cs-slide-0000-0003",
+    "position": 3,
+    "filepath": "src/pages/slides/Slide03Architecture.tsx",
+    "title": "System Architecture",
+    "description": "Three-layer node cross-section: fluid core (n=1.33), 300nm silicone oil buffer (n=1.41), 1mm TPU/TPR shell (n=1.50).",
+    "speakerNotes": "The buffer layer is the key innovation. Geometric mean n = sqrt(1.33 × 1.50) = 1.41 — this is the quarter-wave matching condition for graded-index optics. Result: reflectance drops from 0.36% to 0.0053% at the core-shell boundary."
+  },
+  {
+    "id": "cs-slide-0000-0004",
+    "position": 4,
+    "filepath": "src/pages/slides/Slide04Swarm.tsx",
+    "title": "P2P Swarm Intelligence",
+    "description": "Compulsion-to-minimize-delta behavioral rule. Four-step node loop: Sense → Handshake → Compute → Confirm. No master controller.",
+    "speakerNotes": "The entire swarm behavior is emergent from one rule per node. No global map, no master controller, no broadcast. Each node queries immediate neighbors and minimizes the delta between its own state and theirs. Thermal state is included in every handshake."
+  },
+  {
+    "id": "cs-slide-0000-0005",
+    "position": 5,
+    "filepath": "src/pages/slides/Slide05Optical.tsx",
+    "title": "Optical Performance",
+    "description": "Graded-index buffer validation. 98.5% reflectance reduction, validated 400–700nm at 0–58° both polarizations.",
+    "speakerNotes": "Key result: 0.0053% vs. 0.36% — that is 98.5% reflectance reduction. Validated across the full visible spectrum, at all practical angles of incidence, for both s and p polarizations. This is not an approximation; it is the exact Fresnel formula with the graded-index correction applied."
+  },
+  {
+    "id": "cs-slide-0000-0006",
+    "position": 6,
+    "filepath": "src/pages/slides/Slide06Mechanical.tsx",
+    "title": "Mechanical Validation",
+    "description": "Coupled hoop stress analysis. Internal pressure 0.053 MPa → hoop stress 0.667 MPa. TPU tensile strength 50 MPa. Safety margin 75×.",
+    "speakerNotes": "Three models were evaluated. Rigid shell: ruptures. Uncoupled solid shell: passes but is physically incomplete. Only the coupled fluid+elastic model is correct. Result: hoop stress = Pr/t = 0.053 × 25 / 2 = 0.6625 MPa ≈ 0.667 MPa. Safety margin = 50 / 0.667 = 75×. Independently verified."
+  },
+  {
+    "id": "cs-slide-0000-0007",
+    "position": 7,
+    "filepath": "src/pages/slides/Slide07Demo.tsx",
+    "title": "Swarm-Scale Demo",
+    "description": "1,000-node WebGL simulation. Textured and uniform background conditions. Seams remaining verified by direct visual inspection.",
+    "speakerNotes": "The simulation runs live in the browser. Two conditions: textured background (convergence to match), and uniform background (seam elimination independent of texture noise). The seams-remaining metric is verified by direct visual inspection — not self-report. Available interactively."
+  },
+  {
+    "id": "cs-slide-0000-0008",
+    "position": 8,
+    "filepath": "src/pages/slides/Slide08Fabrication.tsx",
+    "title": "Fabrication Roadmap",
+    "description": "Five-stage physical prototype sequence: Mother Mold → Buffer Layer → Core Filling → Stress Test → Vanishing Demo.",
+    "speakerNotes": "Stage 01 (Mother Mold) and Stage 02 (Buffer Layer) are design-complete. Stage 03 (Core Filling) requires vacuum injection tooling — requires hardware contract. Stages 04 and 05 follow physical prototype completion."
+  },
+  {
+    "id": "cs-slide-0000-0009",
+    "position": 9,
+    "filepath": "src/pages/slides/Slide09Verification.tsx",
+    "title": "Verification Methodology",
+    "description": "Independent re-derivation requirement. Prior runs produced 0.62 MPa and 55.9 MPa from identical inputs — a 90× discrepancy. Both self-reported 'pass.'",
+    "speakerNotes": "This slide documents the verification methodology established during this program. Two prior implementations of the mechanical model produced results 90× apart. Both self-reported passing. The lesson: numeric result plus independent physical/visual inspection is the minimum bar. Self-reporting is not verification."
+  },
+  {
+    "id": "cs-slide-0000-0010",
+    "position": 10,
+    "filepath": "src/pages/slides/Slide10NextSteps.tsx",
+    "title": "Next Steps",
+    "description": "Development trajectory and partnership ask. Physical node fabrication → 7×7 tile demo → DoD development partnership → SBIR/STTR engagement.",
+    "speakerNotes": "Immediate: fabricate single physical node. Near-term: 7×7 tile array for contact-texture vanishing demo. Seeking: DoD development partnership + SBIR/STTR. Contact: Loretta Chapman, Principal Investigator, AI&U, ChromaSkin Program Office, July 2026."
+  }
+]

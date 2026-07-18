@@ -1,0 +1,27 @@
+kind = "slides"
+previewPath = "/chromaskin-pitch/"
+title = "ChromaSkin — Pitch Deck"
+version = "1.0.0"
+id = "artifacts/chromaskin-pitch"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/chromaskin-pitch/" ]
+localPort = 23537
+
+[services.development]
+run = "pnpm --filter @workspace/chromaskin-pitch run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/chromaskin-pitch", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/chromaskin-pitch/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23537"
+BASE_PATH = "/chromaskin-pitch/"

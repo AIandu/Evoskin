@@ -1,0 +1,14 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "QctwtjnCyNHQ5MLo4QcWX"
+uri = "file://.local/outputs/ChromaSkin---Pitch-Deck.pdf"
+type = "pdf"
+title = "ChromaSkin — Pitch Deck.pdf"
+
+[[outputs]]
+id = "dBOXVA3xyoy7w8iEkrDXC"
+uri = "file://.local/outputs/ChromaSkin---Pitch-Deck.pptx"
+type = "slides"
+title = "ChromaSkin — Pitch Deck.pptx"
