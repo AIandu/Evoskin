@@ -117,26 +117,32 @@ void main() {
     vec2 localPos = (vLocalUV - 0.5) * 2.0;
     float dist = length(localPos);
     
+    // Discard outside circle before any computation
+    if (dist > 1.0) discard;
+
     // Calculate convergence strictly from reflectance
     float convergence = 1.0 - clamp((vReflectance - GRADED_REFLECTANCE) / (BASELINE_REFLECTANCE - GRADED_REFLECTANCE), 0.0, 1.0);
     
-    // At low convergence (0), edge is small. At high convergence (1), edge dominates.
+    // At low convergence (0), edge is sharp. At high convergence (1), falloff dominates the whole disc.
     float falloffStart = mix(0.9, 0.0, convergence);
     float edgeAlpha = 1.0 - smoothstep(falloffStart, 1.0, dist);
     
-    if (dist > 1.0) discard;
-    
-    vec4 bgColor;
     if (uIsTextured) {
-        bgColor = texture2D(uBackgroundTexture, vScreenUV);
+        // Textured mode: sample real background texture at this fragment's screen position,
+        // blend node color toward background as convergence rises.
+        vec4 bgColor = texture2D(uBackgroundTexture, vScreenUV);
+        vec3 nodeColor = vec3(0.06, 0.09, 0.06);
+        vec3 finalColor = mix(nodeColor, bgColor.rgb, convergence);
+        gl_FragColor = vec4(finalColor, edgeAlpha);
     } else {
-        bgColor = vec4(0.18, 0.22, 0.18, 1.0); // uniform solid fallback
+        // Uniform mode: the canvas is transparent so the CSS background shows through.
+        // Nodes simply fade to fully transparent as convergence rises.
+        // At 0% convergence they are opaque military-green discs.
+        // At 100% convergence they vanish entirely — no color-matching needed.
+        vec3 nodeColor = vec3(0.18, 0.28, 0.18); // visible olive-green against dark background
+        float uniformAlpha = edgeAlpha * (1.0 - convergence);
+        gl_FragColor = vec4(nodeColor, uniformAlpha);
     }
-    
-    vec3 nodeColor = vec3(0.06, 0.09, 0.06); 
-    vec3 finalColor = mix(nodeColor, bgColor.rgb, convergence);
-    
-    gl_FragColor = vec4(finalColor, edgeAlpha);
 }
 `;
 
@@ -182,7 +188,10 @@ export default function SwarmScene(props: SwarmSceneProps) {
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setClearColor(new THREE.Color(0.18, 0.22, 0.18));
+        // Alpha=0: canvas is transparent, CSS page background shows through.
+        // This is required for uniform mode to work — nodes fade to alpha=0
+        // at full convergence, revealing the CSS background beneath the canvas.
+        renderer.setClearColor(0x000000, 0);
         container.appendChild(renderer.domElement);
 
         const scene = new THREE.Scene();
