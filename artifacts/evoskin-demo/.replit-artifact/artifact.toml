@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "EvoSkin — Vanishing Swarm Demo"
+version = "1.0.0"
+id = "artifacts/evoskin-demo"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21850
+
+[services.development]
+run = "pnpm --filter @workspace/evoskin-demo run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/evoskin-demo", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/evoskin-demo/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21850"
+BASE_PATH = "/"

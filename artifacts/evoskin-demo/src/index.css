@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-sans: 'Share Tech Mono', monospace; 
+}
+
+:root, .dark {
+  --background: 120 10% 3%;
+  --foreground: 140 100% 45%;
+  --border: 140 100% 25%;
+  
+  --card: 120 10% 5%;
+  --card-foreground: 140 100% 45%;
+  
+  --primary: 140 100% 45%;
+  --primary-foreground: 120 10% 3%;
+  
+  --secondary: 140 50% 20%;
+  --secondary-foreground: 140 100% 45%;
+  
+  --muted: 120 20% 8%;
+  --muted-foreground: 140 50% 30%;
+  
+  --accent: 140 100% 25%;
+  --accent-foreground: 140 100% 45%;
+  
+  --input: 140 100% 20%;
+  --ring: 140 100% 45%;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  overflow: hidden;
+  font-family: var(--font-sans);
+}
+
+/* scanlines */
+.scanlines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.bg-hex {
+  background-image: radial-gradient(hsl(140 100% 40% / 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
